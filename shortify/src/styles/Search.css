@@ -1,3 +1,16 @@
 .text-shadow {
   text-shadow: 0px 0px 20px #006e6e;
 }
+
+input {
+  background-color: rgb(255, 248, 239);
+}
+
+button {
+  background-color: rgb(255, 248, 239);
+  box-shadow: inset -2px -2px 3px 0px rgba(0,0,0,0.75);
+}
+
+button:active{
+  box-shadow: inset 2px 2px 3px 0px rgba(0,0,0,0.75);
+}
