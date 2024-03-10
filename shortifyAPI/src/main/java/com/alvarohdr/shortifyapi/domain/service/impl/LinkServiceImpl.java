@@ -22,4 +22,14 @@ public class LinkServiceImpl implements LinkService {
     public Optional<Link> findByUri(String uri) {
         return linkDAO.findByUri(uri);
     }
+
+    @Override
+    public Optional<Link> findByUrl(String url) {
+        return linkDAO.findByUrl(url);
+    }
+
+    @Override
+    public void save(Link link) {
+        linkDAO.saveOrUpdate(link);
+    }
 }

@@ -6,7 +6,7 @@ import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "links")
+@Table(name = "LINKS")
 public class Link implements Serializable {
 
     @Serial

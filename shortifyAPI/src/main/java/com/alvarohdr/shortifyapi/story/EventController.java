@@ -29,7 +29,7 @@ public class EventController {
     }
 
     @GetMapping("{uri}")
-    public ResponseEntity<?> get(@PathVariable String uri){
+    public ResponseEntity<?> get(@PathVariable String uri) {
         Optional<Link> optionalLink = linkService.findByUri(uri);
         if(optionalLink.isPresent()) {
             LinkDto link = linkFactory.getDto(optionalLink.get());
@@ -40,7 +40,21 @@ public class EventController {
     }
 
     @PostMapping("{url}")
-    public ResponseEntity<?> post(@PathVariable String url){
-        return ResponseEntity.ok().body("a");
+    public ResponseEntity<?> post(@PathVariable String url) {
+        // TODO Álvaro: check if it's a valid URL
+        Optional<Link> optionalLink = linkService.findByUrl(url);
+        String uri;
+        if(optionalLink.isPresent()) {
+            uri = optionalLink.get().getUri();
+        }else {
+            Link link = new Link();
+            link.setUrl(url);
+            do {
+                uri = UriUtils.crateUri();
+            }while (linkService.findByUri(uri).isPresent());
+            link.setUri(uri);
+            linkService.save(link);
+        }
+        return ResponseEntity.ok().body(uri);
     }
 }

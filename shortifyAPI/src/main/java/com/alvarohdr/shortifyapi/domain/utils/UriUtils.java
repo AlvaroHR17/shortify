@@ -12,9 +12,6 @@ public class UriUtils {
             Random random = new Random();
             uri.append(DICTIONARY.charAt(random.nextInt(DICTIONARY.length())));
         }
-
-        //TODO Álvaro: Comprobar que la uri dada no existe en bd;
-
         return uri.toString();
     }
 }
